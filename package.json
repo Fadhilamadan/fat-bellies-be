@@ -1,0 +1,32 @@
+{
+  "name": "fat-bellies-be",
+  "version": "1.0.0",
+  "description": "Fat Bellies",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fadhilamadan/fat-bellies-be.git"
+  },
+  "author": "Fadhil Amadan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fadhilamadan/fat-bellies-be/issues"
+  },
+  "homepage": "https://github.com/Fadhilamadan/fat-bellies-be#readme",
+  "dependencies": {
+    "dotenv": "^10",
+    "express": "^4",
+    "mongoose": "^6",
+    "pg": "^8",
+    "pg-hstore": "^2",
+    "sequelize": "^6"
+  },
+  "devDependencies": {
+    "prettier": "^2"
+  }
+}

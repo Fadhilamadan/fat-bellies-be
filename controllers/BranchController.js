@@ -17,7 +17,12 @@ exports.branchList = [
             };
             break;
           case 'opening_hours':
-            whereBranch.opening_hours = req.query[key];
+            whereBuffet.start_time = {
+              [Op.lte]: req.query[key],
+            };
+            whereBuffet.end_time = {
+              [Op.gte]: req.query[key],
+            };
             break;
           case 'price':
             whereBuffet.price = {

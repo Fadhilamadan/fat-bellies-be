@@ -20,10 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       branch_id: DataTypes.INTEGER,
       plan_name: DataTypes.STRING,
       max_capacity: DataTypes.INTEGER,
+      on_demand: DataTypes.BOOLEAN,
       price: DataTypes.DECIMAL,
       day: DataTypes.STRING,
-      start_time: DataTypes.DATE,
-      end_time: DataTypes.DATE,
+      start_time: DataTypes.TIME,
+      end_time: DataTypes.TIME,
     },
     {
       sequelize,

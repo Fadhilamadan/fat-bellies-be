@@ -17,6 +17,10 @@ module.exports = {
       max_capacity: {
         type: Sequelize.INTEGER,
       },
+      on_demand: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
       price: {
         type: Sequelize.DECIMAL,
       },
@@ -24,10 +28,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       start_time: {
-        type: Sequelize.DATE,
+        type: Sequelize.TIME,
       },
       end_time: {
-        type: Sequelize.DATE,
+        type: Sequelize.TIME,
       },
       createdAt: {
         allowNull: false,

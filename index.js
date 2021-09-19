@@ -27,8 +27,8 @@ app.use((err, req, res, next) => {
   }
 });
 
-app.listen(process.env.API_PORT, () => {
-  console.log('API running http://localhost:' + process.env.API_PORT);
+app.listen(process.env.PORT || 8000, () => {
+  console.log('API running http://localhost:' + process.env.PORT);
 });
 
 module.exports = app;

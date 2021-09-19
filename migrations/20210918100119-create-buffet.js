@@ -17,6 +17,9 @@ module.exports = {
       max_capacity: {
         type: Sequelize.INTEGER,
       },
+      current_capacity: {
+        type: Sequelize.INTEGER,
+      },
       on_demand: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,

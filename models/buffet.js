@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       branch_id: DataTypes.INTEGER,
       plan_name: DataTypes.STRING,
       max_capacity: DataTypes.INTEGER,
+      current_capacity: DataTypes.INTEGER,
       on_demand: DataTypes.BOOLEAN,
       price: DataTypes.DECIMAL,
       day: DataTypes.STRING,

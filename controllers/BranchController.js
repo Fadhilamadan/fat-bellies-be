@@ -30,6 +30,10 @@ exports.branchList = [
       }
 
       const branchList = await Branch.findAll({
+        order: [
+          ['id', 'DESC'],
+          [Buffet, 'day'],
+        ],
         where: Object.keys(whereBranch).length !== 0 ? whereBranch : null,
         include: [
           {

@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
@@ -9,6 +10,7 @@ const response = require('./helpers/response');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

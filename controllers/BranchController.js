@@ -24,10 +24,21 @@ exports.branchList = [
               [Op.gte]: req.query[key],
             };
             break;
-          case 'price':
-            whereBuffet.price = {
-              [Op.between]: [req.query[key][0], req.query[key][1]],
-            };
+          case 'min_price':
+          case 'max_price':
+            if (req.query['min_price'] && req.query['max_price']) {
+              whereBuffet.price = {
+                [Op.gte]: req.query['min_price'],
+                [Op.lte]: req.query['max_price'],
+              };
+            } else {
+              whereBuffet.price = {
+                [Op.or]: {
+                  [Op.gte]: req.query['min_price'],
+                  [Op.lte]: req.query['max_price'],
+                },
+              };
+            }
             break;
           default:
             break;

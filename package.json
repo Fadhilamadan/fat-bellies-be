@@ -23,7 +23,8 @@
     "express": "^4",
     "pg": "^8",
     "pg-hstore": "^2",
-    "sequelize": "^6"
+    "sequelize": "^6",
+    "swagger-ui-express": "^4"
   },
   "devDependencies": {
     "prettier": "^2"

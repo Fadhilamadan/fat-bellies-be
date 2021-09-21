@@ -3,6 +3,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDoc = require('./swagger.json');
+
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
 
@@ -17,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 // Route Prefixes
 app.use('/', indexRouter);
 app.use('/api/', apiRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 // Throw 404 if URL not found
 app.all('*', function (req, res) {

@@ -1,0 +1,315 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Fat Bellies"
+  },
+  "servers": [
+    {
+      "url": "http://fat-bellies-be.herokuapp.com/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Branch"
+    },
+    {
+      "name": "Buffet"
+    }
+  ],
+  "paths": {
+    "/branch": {
+      "get": {
+        "tags": ["Branch"],
+        "summary": "branch list",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "description": "search by name"
+          },
+          {
+            "in": "query",
+            "name": "opening_hours",
+            "required": false,
+            "description": "filter by opening hours"
+          },
+          {
+            "in": "query",
+            "name": "min_price",
+            "required": false,
+            "description": "filter by minimal price"
+          },
+          {
+            "in": "query",
+            "name": "max_price",
+            "required": false,
+            "description": "filter by maximal price"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Branch"],
+        "summary": "create new branch",
+        "description": "",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/branch"
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/branch/{branchId}": {
+      "get": {
+        "tags": ["Branch"],
+        "summary": "get existing branch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "branchId",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "branch id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Branch"],
+        "summary": "update existing branch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "branchId",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "branch id"
+          }
+        ],
+        "requestBody": {
+          "description": "object with new data to be updated",
+          "$ref": "#/components/requestBodies/branch"
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Branch"],
+        "summary": "delete existing branch",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "branchId",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "branch id to be updated"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/buffet": {
+      "get": {
+        "tags": ["Buffet"],
+        "summary": "buffet list",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Buffet"],
+        "summary": "create new buffet",
+        "description": "",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/buffet"
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/buffet/{buffetId}": {
+      "get": {
+        "tags": ["Buffet"],
+        "summary": "get existing buffet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buffetId",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "buffet id to be get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Buffet"],
+        "summary": "update existing buffet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buffetId",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "buffet id to be update"
+          }
+        ],
+        "requestBody": {
+          "description": "object with new data to be updated",
+          "$ref": "#/components/requestBodies/buffet"
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Buffet"],
+        "summary": "delete existing buffet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buffetId",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "buffet id to be delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "requestBodies": {
+      "branch": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/branch"
+            }
+          }
+        }
+      },
+      "buffet": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/buffet"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "branch": {
+        "required": ["name", "latitude", "longitude", "opening_hour"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Jakarta"
+          },
+          "latitude": {
+            "type": "string",
+            "example": "-6.229728"
+          },
+          "longitude": {
+            "type": "string",
+            "example": "106.6894312"
+          },
+          "opening_hour": {
+            "type": "string",
+            "example": "09:00"
+          }
+        }
+      },
+      "buffet": {
+        "required": [
+          "branch_id",
+          "plan_name",
+          "max_capacity",
+          "current_capacity",
+          "on_demand",
+          "price",
+          "day",
+          "start_time",
+          "end_time"
+        ],
+        "properties": {
+          "branch_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "plan_name": {
+            "type": "string",
+            "example": "Japanese Wagyu"
+          },
+          "max_capacity": {
+            "type": "integer",
+            "example": 100
+          },
+          "current_capacity": {
+            "type": "integer",
+            "example": 0
+          },
+          "price": {
+            "type": "integer",
+            "example": 250000
+          },
+          "day": {
+            "type": "string",
+            "example": "Monday"
+          },
+          "start_time": {
+            "type": "date",
+            "example": "09:00:00"
+          },
+          "end_time": {
+            "type": "date",
+            "example": "15:00:00"
+          }
+        }
+      }
+    }
+  }
+}

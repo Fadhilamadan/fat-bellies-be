@@ -9,6 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       branch_id: {
+        allowNull: false,
         type: Sequelize.INTEGER,
       },
       plan_name: {
@@ -16,9 +17,11 @@ module.exports = {
       },
       max_capacity: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       current_capacity: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       on_demand: {
         type: Sequelize.BOOLEAN,
@@ -26,9 +29,18 @@ module.exports = {
       },
       price: {
         type: Sequelize.DECIMAL,
+        defaultValue: 0,
       },
       day: {
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM([
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+          'Sunday',
+        ]),
       },
       start_time: {
         type: Sequelize.TIME,
